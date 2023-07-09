@@ -8,6 +8,7 @@ void buttonTick()
     switch (btn.hasClicks())
     {
     case 1: // turn off/on
+        // DEBUGLN("tap");
         data.power = !data.power;
         sendCurrentState();
         memory.update();

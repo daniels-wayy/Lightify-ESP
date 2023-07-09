@@ -26,6 +26,8 @@
     Bed
     Bedroom
     368
+
+    !!!! Noise effects led HEIGHT (LED_AMOUNT / 4) + 5
 */
 // ------ Living room TV -------
 /*
@@ -35,7 +37,7 @@
     Living Room
     78
 */
-// ------ Kitchen -------
+// ------ Kitchen Workspace -------
 /*
     DSLY_Kitchen_Workspace
     Lightify Kitchen Workspace
@@ -43,24 +45,33 @@
     Kitchen
     156
 */
+// ------ Living Room Piano -------
+/*
+    DSLY_Livingroom_Piano
+    Lightify Livingroom Piano
+    Piano
+    Living Room
+    77
+*/
 
 #define LED_PIN D7
 #define BTN_PIN D5
-#define LED_AMOUNT 156
+#define LED_AMOUNT 77
 #define BTN_LEVEL 1
 #define EB_STEP 40
+#define MODE_AMOUNT 5
 
-#define DEVICE_NAME ("Workspace")
-#define DEVICE_GROUP ("Kitchen")
+#define DEVICE_NAME ("Piano")
+#define DEVICE_GROUP ("Living Room")
 
-#define AP_NAME ("Lightify Kitchen Workspace") // WiFi Hotspot name
-#define AP_PASS ("550132550132")               // WiFi Hotspot pass
+#define AP_NAME ("Lightify Livingroom Piano") // WiFi Hotspot name
+#define AP_PASS ("550132550132")              // WiFi Hotspot pass
 // const uint8_t AP_STATIC_IP[] = {192, 168, 4, 4}; // WiFi Hotspot static IP
 
 #define MQTT_HEADER "DSLY:"                           // Packets header
 #define MAX_MQTT_BUFFER_SIZE (255U)                   // MQTT max buffer size
 const uint8_t hLen = strlen(MQTT_HEADER);             // length of header
-const char mqttLocal[30] = "DSLY_Kitchen_Workspace";  // local topic
+const char mqttLocal[30] = "DSLY_Livingroom_Piano";   // local topic
 const char mqttRemote[30] = "DSLY_App";               // remote topic
 const char mqttHost[30] = "broker.mqttdashboard.com"; // broker
 const uint16_t mqttPort = 1883;
@@ -81,7 +92,16 @@ struct DeviceData
     float breathFactor = 0;        // 0...1.0
     int8_t breathDir = -1;
     uint8_t breathVal = brightness;
+    uint8_t effectIndex = 0;
 };
+
+struct ModeType
+{
+    uint8_t Speed = 4;
+    uint8_t Scale = 8U;
+};
+
+// #define USE_BUTTON
 
 // #define USE_SERIAL
 #ifdef USE_SERIAL

@@ -1,11 +1,11 @@
 #include "strip.h"
 
-void animation()
+void stripTick()
 {
-    static Timer tmr(20);
-
-    if (tmr.period())
+    static uint32_t tmr;
+    if (millis() - tmr >= 30)
     {
+        tmr = millis();
 
         uint8_t colorVal = data.power ? data.colorValue : 0;
 
@@ -49,20 +49,4 @@ void loadAnimation(CRGB color)
         FastLED.show();
     }
     yield();
-}
-
-void pulse()
-{
-    for (int i = data.brightness; i > data.brightness - 85; i -= 5)
-    {
-        FastLED.setBrightness(i);
-        FastLED.show();
-        delay(8);
-    }
-    for (int i = data.brightness - 85; i < data.brightness; i += 5)
-    {
-        FastLED.setBrightness(i);
-        FastLED.show();
-        delay(8);
-    }
 }

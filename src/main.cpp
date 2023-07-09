@@ -11,6 +11,7 @@
 #include "data/data.h"
 #include "mqtt/mqtt.h"
 #include "strip/strip.h"
+#include "effects/effects.h"
 #include "button/button.h"
 #include "startup.h"
 
@@ -21,6 +22,8 @@ CRGB leds[LED_AMOUNT];
 WiFiClient espClient;
 PubSubClient mqtt(espClient);
 EEManager memory(data);
+ModeType modes[MODE_AMOUNT];
+boolean loadingFlag = true;
 
 void setup()
 {
@@ -30,7 +33,19 @@ void setup()
 void loop()
 {
   memory.tick();
-  animation();
-  buttonTick();
   mqttTick();
+  if (data.effectIndex > 0)
+  {
+    effectsTick();
+  }
+  else
+  {
+    stripTick();
+  }
+
+#ifdef USE_BUTTON
+  buttonTick();
+#endif
+
+  yield();
 }

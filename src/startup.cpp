@@ -16,8 +16,10 @@ void startup()
     FastLED.setBrightness(50);
     FastLED.show();
 
+#ifdef USE_BUTTON
     btn.setButtonLevel(BTN_LEVEL);
     btn.setStepTimeout(EB_STEP);
+#endif
 
     if (WiFi.SSID().length())
     {
@@ -44,4 +46,6 @@ void startup()
     randomSeed(micros());
 
     FastLED.setBrightness(data.brightness);
+
+    data.effectIndex = 0;
 }

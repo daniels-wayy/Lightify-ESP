@@ -8,6 +8,8 @@
 
 extern PubSubClient mqtt;
 extern DeviceData data;
+extern ModeType modes[MODE_AMOUNT];
+extern boolean loadingFlag;
 
 void mqttTick();
 void connectMQTT();
