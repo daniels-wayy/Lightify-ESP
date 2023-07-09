@@ -28,12 +28,12 @@ void parsePacket()
     }
     else if (inputBuffer.startsWith("PWR"))
     {
-        uint8_t powerState = inputBuffer.toUint(3);
+        uint8_t powerState = inputBuffer.toInt(3);
         data.power = powerState;
     }
     else if (inputBuffer.startsWith("BRI"))
     {
-        uint8_t brightness = inputBuffer.toUint(3);
+        uint8_t brightness = inputBuffer.toInt(3);
         uint8_t constrainedBrightness = constrain(brightness, 0, 255);
         data.brightness = constrainedBrightness;
         if (data.breathFactor)
@@ -44,9 +44,9 @@ void parsePacket()
     else if (inputBuffer.startsWith("CLR"))
     {
         // CLRhue,sat,val
-        int colorData[10];
+        byte colorData[10];
         inputBuffer.remove(0, 3);
-        inputBuffer.parseInts(colorData, 10);
+        inputBuffer.parse(colorData, 1, 10);
 
         uint8_t colorHue = constrain(colorData[0], 0, 255);
         uint8_t colorSat = constrain(colorData[1], 0, 255);
@@ -62,6 +62,24 @@ void parsePacket()
         data.breathFactor = breathFactor;
         data.breathDir = -1;
         data.breathVal = data.brightness;
+    }
+    else if (inputBuffer.startsWith("EFF"))
+    {
+        uint8_t effectIndex = inputBuffer.toInt(3);
+        data.effectIndex = effectIndex;
+        loadingFlag = true;
+    }
+    else if (inputBuffer.startsWith("SPD"))
+    {
+        uint8_t speed = inputBuffer.toInt(3);
+        modes[data.effectIndex].Speed = speed;
+        loadingFlag = true;
+    }
+    else if (inputBuffer.startsWith("SCL"))
+    {
+        uint8_t scale = inputBuffer.toInt(3);
+        modes[data.effectIndex].Scale = scale;
+        loadingFlag = true;
     }
 }
 
@@ -86,6 +104,12 @@ void sendCurrentState()
     outputBuffer += data.colorValue;
     outputBuffer += ",";
     outputBuffer += data.breathFactor;
+    outputBuffer += ",";
+    outputBuffer += data.effectIndex;
+    outputBuffer += ",";
+    outputBuffer += modes[data.effectIndex].Speed;
+    outputBuffer += ",";
+    outputBuffer += modes[data.effectIndex].Scale;
     mqtt.publish(mqttRemote, outputBuffer.buf);
 }
 
