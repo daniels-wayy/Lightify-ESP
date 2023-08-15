@@ -59,7 +59,7 @@
     Lightify Bedroom Monitor
     Monitor
     Bedroom
-    92
+    95
 */
 
 #define LED_PIN D7
