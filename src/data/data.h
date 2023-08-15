@@ -53,25 +53,33 @@
     Living Room
     77
 */
+// ------ Bedroom Monitor -------
+/*
+    DSLY_Bedroom_Monitor
+    Lightify Bedroom Monitor
+    Monitor
+    Bedroom
+    92
+*/
 
 #define LED_PIN D7
 #define BTN_PIN D5
-#define LED_AMOUNT 77
+#define LED_AMOUNT 95
 #define BTN_LEVEL 1
 #define EB_STEP 40
 #define MODE_AMOUNT 5
 
-#define DEVICE_NAME ("Piano")
-#define DEVICE_GROUP ("Living Room")
+#define DEVICE_NAME ("Monitor")
+#define DEVICE_GROUP ("Bedroom")
 
-#define AP_NAME ("Lightify Livingroom Piano") // WiFi Hotspot name
+#define AP_NAME ("Lightify Bedroom Monitor") // WiFi Hotspot name
 #define AP_PASS ("550132550132")              // WiFi Hotspot pass
 // const uint8_t AP_STATIC_IP[] = {192, 168, 4, 4}; // WiFi Hotspot static IP
 
 #define MQTT_HEADER "DSLY:"                           // Packets header
 #define MAX_MQTT_BUFFER_SIZE (255U)                   // MQTT max buffer size
 const uint8_t hLen = strlen(MQTT_HEADER);             // length of header
-const char mqttLocal[30] = "DSLY_Livingroom_Piano";   // local topic
+const char mqttLocal[30] = "DSLY_Bedroom_Monitor";   // local topic
 const char mqttRemote[30] = "DSLY_App";               // remote topic
 const char mqttHost[30] = "broker.mqttdashboard.com"; // broker
 const uint16_t mqttPort = 1883;
