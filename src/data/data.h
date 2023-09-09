@@ -4,82 +4,52 @@
 #include <Arduino.h>
 
 // ***** DEVICES SETUP *****
-/*
-    mqttLocal
-    AP_NAME
-    DEVICE_NAME
-    DEVICE_GROUP
-    LED_AMOUNT
-*/
-// ------ Bedroom Closet -------
-/*
-    DSLY_Bedroom_Closet
-    Lightify Bedroom Closet
-    Closet
-    Bedroom
-    92
-*/
-// ------ Bedroom Bed -------
-/*
-    DSLY_Bedroom_Bed
-    Lightify Bedroom Bed
-    Bed
-    Bedroom
-    368
 
-    !!!! Noise effects led HEIGHT (LED_AMOUNT / 4) + 5
-*/
-// ------ Living room TV -------
-/*
-    DSLY_Livingroom_TV
-    Lightify Livingroom TV
-    TV
-    Living Room
-    78
-*/
-// ------ Kitchen Workspace -------
-/*
-    DSLY_Kitchen_Workspace
-    Lightify Kitchen Workspace
-    Workspace
-    Kitchen
-    156
-*/
-// ------ Living Room Piano -------
-/*
-    DSLY_Livingroom_Piano
-    Lightify Livingroom Piano
-    Piano
-    Living Room
-    77
-*/
-// ------ Bedroom Monitor -------
-/*
-    DSLY_Bedroom_Monitor
-    Lightify Bedroom Monitor
-    Monitor
-    Bedroom
-    95
-*/
+
+// mqttLocal, AP_NAME, DEVICE_NAME, DEVICE_GROUP, LED_AMOUNT
+
+
+// ------ Bedroom Closet ------- DSLY_Bedroom_Closet, Lightify Bedroom Closet, Closet, Bedroom, 92
+
+
+// ------ Bedroom Bed ------- DSLY_Bedroom_Bed, Lightify Bedroom Bed, Bed, Bedroom, 368 -- (!!!! Noise effects led HEIGHT (LED_AMOUNT / 4) + 5)
+    
+
+// ------ Living room TV ------- DSLY_Livingroom_TV, Lightify Livingroom TV, TV, Living Room, 78
+
+
+// ------ Kitchen Workspace ------- DSLY_Kitchen_Workspace, Lightify Kitchen Workspace, Workspace, Kitchen, 156
+
+
+// ------ Living Room Piano ------- DSLY_Livingroom_Piano, Lightify Livingroom Piano, Piano, Living Room, 77
+
+
+// ------ Bedroom Monitor ------- DSLY_Bedroom_Monitor, Lightify Bedroom Monitor, Monitor, Bedroom, 95
+
+
+// ****** NICK'S DEVICES ******
+
+
+// ------ Kitchen Ceiling ------- DNLY_Kitchen_Ceiling, Lightify Kitchen Ceiling, Ceiling, Kitchen, 3
 
 #define LED_PIN D7
 #define BTN_PIN D5
-#define LED_AMOUNT 95
+#define LED_AMOUNT 3
 #define BTN_LEVEL 1
 #define EB_STEP 40
 #define MODE_AMOUNT 5
 
-#define DEVICE_NAME ("Monitor")
-#define DEVICE_GROUP ("Bedroom")
+#define DEVICE_NAME ("Ceiling")
+#define DEVICE_GROUP ("Kitchen")
 
-#define AP_NAME ("Lightify Bedroom Monitor") // WiFi Hotspot name
+#define AP_NAME ("Lightify Kitchen Ceiling") // WiFi Hotspot name
 #define AP_PASS ("550132550132")              // WiFi Hotspot pass
 // const uint8_t AP_STATIC_IP[] = {192, 168, 4, 4}; // WiFi Hotspot static IP
 
 #define MQTT_HEADER "DSLY:"                           // Packets header
 #define MAX_MQTT_BUFFER_SIZE (255U)                   // MQTT max buffer size
 const uint8_t hLen = strlen(MQTT_HEADER);             // length of header
-const char mqttLocal[30] = "DSLY_Bedroom_Monitor";   // local topic
+const char mqttLocal[30] = "DNLY_Kitchen_Ceiling";   // local topic
 const char mqttRemote[30] = "DSLY_App";               // remote topic
 const char mqttHost[30] = "broker.mqttdashboard.com"; // broker
 const uint16_t mqttPort = 1883;
