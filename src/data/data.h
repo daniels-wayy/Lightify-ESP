@@ -30,11 +30,11 @@
 // ****** NICK'S DEVICES ******
 
 
-// ------ Kitchen Ceiling ------- DNLY_Kitchen_Ceiling, Lightify Kitchen Ceiling, Ceiling, Kitchen, 3
+// ------ Kitchen Ceiling ------- DNLY_Kitchen_Ceiling, Lightify Kitchen Ceiling, Ceiling, Kitchen, 141
 
 #define LED_PIN D7
 #define BTN_PIN D5
-#define LED_AMOUNT 3
+#define LED_AMOUNT 141
 #define BTN_LEVEL 1
 #define EB_STEP 40
 #define MODE_AMOUNT 5
