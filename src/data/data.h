@@ -12,7 +12,10 @@
 // ------ Bedroom Closet ------- DSLY_Bedroom_Closet, Lightify Bedroom Closet, Closet, Bedroom, 92
 
 
-// ------ Bedroom Bed ------- DSLY_Bedroom_Bed, Lightify Bedroom Bed, Bed, Bedroom, 368 -- (!!!! Noise effects led HEIGHT (LED_AMOUNT / 4) + 5)
+// ------ Bedroom Bed lowerside ------- DSLY_Bedroom_Bed, Lightify Bedroom Bed lowerside, Bed lowerside, Bedroom, 368 -- (!!!! Noise effects led HEIGHT (LED_AMOUNT / 4) + 5)
+    
+
+// ------ Bedroom Bed upperside ------- DSLY_Bedroom_Bed_Upperside, Lightify Bedroom Bed upperside, Bed upperside, Bedroom, 79
     
 
 // ------ Living room TV ------- DSLY_Livingroom_TV, Lightify Livingroom TV, TV, Living Room, 78
@@ -24,7 +27,7 @@
 // ------ Living Room Piano ------- DSLY_Livingroom_Piano, Lightify Livingroom Piano, Piano, Living Room, 77
 
 
-// ------ Bedroom Monitor ------- DSLY_Bedroom_Monitor, Lightify Bedroom Monitor, Monitor, Bedroom, 95
+// ------ Office Monitor ------- DSLY_Bedroom_Monitor, Lightify Office Monitor, Monitor, Office, 95
 
 
 // ****** NICK'S DEVICES ******
@@ -34,22 +37,22 @@
 
 #define LED_PIN D7
 #define BTN_PIN D5
-#define LED_AMOUNT 141
+#define LED_AMOUNT 79
 #define BTN_LEVEL 1
 #define EB_STEP 40
 #define MODE_AMOUNT 5
 
-#define DEVICE_NAME ("Ceiling")
-#define DEVICE_GROUP ("Kitchen")
+#define DEVICE_NAME ("Bed upperside")
+#define DEVICE_GROUP ("Bedroom")
 
-#define AP_NAME ("Lightify Kitchen Ceiling") // WiFi Hotspot name
+#define AP_NAME ("Lightify Bedroom Bed upperside") // WiFi Hotspot name
 #define AP_PASS ("550132550132")              // WiFi Hotspot pass
 // const uint8_t AP_STATIC_IP[] = {192, 168, 4, 4}; // WiFi Hotspot static IP
 
 #define MQTT_HEADER "DSLY:"                           // Packets header
 #define MAX_MQTT_BUFFER_SIZE (255U)                   // MQTT max buffer size
 const uint8_t hLen = strlen(MQTT_HEADER);             // length of header
-const char mqttLocal[30] = "DNLY_Kitchen_Ceiling";   // local topic
+const char mqttLocal[30] = "DSLY_Bedroom_Bed_Upperside";   // local topic
 const char mqttRemote[30] = "DSLY_App";               // remote topic
 const char mqttHost[30] = "broker.mqttdashboard.com"; // broker
 const uint16_t mqttPort = 1883;
